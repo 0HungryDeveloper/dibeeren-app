@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GalleryComponent {
 
+	image1: string = '../../../../../assets/images/Product 1.png';
+	image2: string = '../../../../../assets/images/Product 2.png';
+	image3: string = '../../../../../assets/images/Product 3.png';
 }

@@ -1,0 +1,10 @@
+<article class="card" *ngFor="let question of questions; let i = index">
+	<button class="card__title" (click)="selectedAccordionIndex = i">
+		<p class="card__title__text">{{ question.question }}</p>
+		<span class="card__title__icon" [ngClass]="{'card__title__icon--open': selectedAccordionIndex === i, 'card__title__icon--closed': selectedAccordionIndex !== i}"></span>
+	</button>
+	<div class="card__line"></div>
+	<section class="card__content" *ngIf="selectedAccordionIndex === i">
+		<p>{{ question.answer }}</p>
+	</section>
+</article>
