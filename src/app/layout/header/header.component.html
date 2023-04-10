@@ -1,0 +1,46 @@
+<header>
+	<nav class="navbar">
+		<div class="navbar__logo">
+			<a href="#">
+				<img src="../../../assets/icons/Logo.svg" alt="Logo Dibeeren">
+			</a>
+		</div>
+		<div class="navbar__small-menu">
+			<button class="navbar__small-menu__cart btn-menu">
+				<img src="../../../assets/icons/Vector.svg" alt="">
+			</button>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span>
+					<img src="../../../assets/icons/hambergermenu.svg" alt="">
+				</span>
+			</button>
+		</div>
+		<!-- Desktop Version Menu  -->
+		<ul class="navbar__links">
+			<li>
+				<a href="#">Inicio</a>
+			</li>
+			<li>
+				<a href="#">Cátalogo</a>
+			</li>
+			<li class="navbar__links__cart" (click)="redirectToCart()">
+				<img src="../../../assets/icons/Vector.svg" alt="">
+				<a href="#">Carrito</a>
+			</li>
+		</ul>
+		<!-- Responsive Menu List -->
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<ul class="navbar__movil">
+					<li>
+						<a href="#">Inicio</a>
+					</li>
+					<li>
+						<a href="#">Cátalogo</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
