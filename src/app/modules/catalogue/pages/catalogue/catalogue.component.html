@@ -1,0 +1,34 @@
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<main class="product">
+
+	<h2 class="product__title">Lorem ipsum dolor sit</h2>
+
+	<section class="product-table">
+		<div class="product-table__filter">
+			<p>Filtrar por: </p>
+			<select class="form-select" [(ngModel)]="selectedCategory">
+				<option value="">Todos los productos</option>
+				<option *ngFor="let category of categoryProducts" [value]="category">{{ category }}</option>
+			</select>
+		</div>
+		<div class="product-table__search">
+			<input class="filter-input" type="text" [(ngModel)]="productFilter">
+		</div>
+	</section>
+
+	<section class="catalogue__grid" *ngIf="!loadingListProducts">
+		<app-product-card
+			*ngFor="let product of products | categoryFilter:selectedCategory | searchFilter: productFilter | paginate : { itemsPerPage: 6, currentPage: page }"
+			[image]="product.image" [productName]="product.productName" [price]="product.price"></app-product-card>
+	</section>
+	<section *ngIf="loadingListProducts">
+		<app-products-loader></app-products-loader>
+	</section>
+
+	<footer class="product-table__footer">
+		<pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel=""
+			nextLabel=""></pagination-controls>
+	</footer>
+</main>

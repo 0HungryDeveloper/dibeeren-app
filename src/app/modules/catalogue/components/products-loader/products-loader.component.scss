@@ -1,0 +1,26 @@
+@import '../../../../../styles.scss';
+
+.card {
+	border: 1px solid #cccccc;
+	border-radius: 0 0 10px 10px;
+	overflow: hidden;
+
+	&__image {
+		height: 200px;
+		width: 100%;
+		background-color: #858e96;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		padding: 0.5rem;
+	}
+}
+
+.grid {
+	margin: 2rem 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill,
+			minmax(230px, 1fr));
+	gap: 1rem;
+}
