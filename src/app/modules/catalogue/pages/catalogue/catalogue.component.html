@@ -17,28 +17,13 @@
 			<input class="filter-input" type="text" [(ngModel)]="productFilter">
 		</div>
 	</section>
+
 	<section class="catalogue__grid">
 		<app-product-card
 			*ngFor="let product of products | categoryFilter:selectedCategory | searchFilter: productFilter | paginate : { itemsPerPage: 6, currentPage: page }"
 			[image]="product.image" [productName]="product.productName" [price]="product.price"></app-product-card>
 	</section>
-	<!-- <div class="container">
-		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-			<ng-container *ngFor="let product of products | categoryFilter:selectedCategory | searchFilter: productFilter | paginate : { itemsPerPage: 6, currentPage: page }">
-				<div class="col" >
-					<app-product-card
-						[image]="product.image" [productName]="product.productName"
-						[price]="product.price"></app-product-card>
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">Tarjeta 2</h5>
-								<p class="card-text">Contenido de la tarjeta 2</p>
-							</div>
-						</div>
-				</div>
-			</ng-container>
-		</div>
-	</div> -->
+
 	<footer class="product-table__footer">
 		<pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel=""
 			nextLabel=""></pagination-controls>

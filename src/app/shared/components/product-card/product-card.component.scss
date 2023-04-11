@@ -4,6 +4,7 @@
 	border: 1px solid #cccccc;
 	border-radius: 0 0 10px 10px;
 	overflow: hidden;
+	width: minmax(230px, 100%);
 
 	&__image {
 		width: 100%;

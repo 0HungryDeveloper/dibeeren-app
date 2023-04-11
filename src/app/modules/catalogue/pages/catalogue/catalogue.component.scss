@@ -72,6 +72,16 @@
 	}
 }
 
+.catalogue {
+	&__grid {
+		margin: 2rem 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill,
+				minmax(230px, 1fr));
+		gap: 1rem;
+	}
+}
+
 @include media-lg {
 	.product-table {
 		display: flex;
@@ -104,17 +114,6 @@
 				margin-bottom: 0;
 			}
 		}
-	}
-}
-
-
-.catalogue {
-	&__grid {
-		margin: 2rem 0;
-		display: grid;
-		grid-template-columns: repeat(auto-fit,
-				minmax(230px, 1fr));
-		gap: 1rem;
 	}
 }
 
