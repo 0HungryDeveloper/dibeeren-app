@@ -7,13 +7,15 @@ import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 import { SharedModule } from '@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { ProductsLoaderComponent } from './components/products-loader/products-loader.component';
 
 
 @NgModule({
 	declarations: [
 		CatalogueComponent,
 		CategoryFilterPipe,
-  SearchFilterPipe
+  SearchFilterPipe,
+  ProductsLoaderComponent
 	],
 	imports: [
 		CommonModule,

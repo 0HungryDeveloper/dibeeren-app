@@ -18,10 +18,13 @@
 		</div>
 	</section>
 
-	<section class="catalogue__grid">
+	<section class="catalogue__grid" *ngIf="!loadingListProducts">
 		<app-product-card
 			*ngFor="let product of products | categoryFilter:selectedCategory | searchFilter: productFilter | paginate : { itemsPerPage: 6, currentPage: page }"
 			[image]="product.image" [productName]="product.productName" [price]="product.price"></app-product-card>
+	</section>
+	<section *ngIf="loadingListProducts">
+		<app-products-loader></app-products-loader>
 	</section>
 
 	<footer class="product-table__footer">

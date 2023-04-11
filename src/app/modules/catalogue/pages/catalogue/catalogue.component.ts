@@ -31,6 +31,7 @@ export class CatalogueComponent implements OnInit {
 	}
 
 	onFetchProducts(): void {
+		this.loadingListProducts = true;
 		this.productService.onFetchProducts().subscribe(products => {
 			this.products = products;
 			this.loadingListProducts = false;
