@@ -8,6 +8,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { MoreInformationComponent } from './components/more-information/more-information.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { QuestionCardComponent } from './components/question-card/question-card.component';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { SliderComponent } from './components/slider/slider.component';
 		GalleryComponent,
 		ListProductsComponent,
 		MoreInformationComponent,
-		SliderComponent
+		SliderComponent,
+		QuestionCardComponent
 	],
 	imports: [
 		CommonModule,
-		HomeRoutingModule
+		HomeRoutingModule,
+		SharedModule
 	]
 })
 export class HomeModule { }

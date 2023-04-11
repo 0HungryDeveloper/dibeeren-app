@@ -1,0 +1,47 @@
+@import '../../../../../styles.scss';
+
+.card {
+	width: 100%;
+	background-color: $secondary-color;
+	border: none;
+	margin: 1.5rem 0;
+
+	&__title {
+		background: none;
+		width: 100%;
+		text-align: left;
+		padding: 1rem;
+		border: none;
+		font-size: 1.2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&__icon {
+			content: '';
+		}
+
+		&__icon--open::after {
+			content: '-';
+			color: $main;
+			font-size: 1.5rem;
+		}
+
+		&__icon--closed::after {
+			content: '+';
+			color: $main;
+			font-size: 1.5rem;
+		}
+	}
+
+	&__content {
+		padding: 1rem;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	&__line {
+		border: 1px solid $main;
+		margin: 5px 0 1rem;
+	}
+}

@@ -1,0 +1,19 @@
+@import '../../../../../styles.scss';
+
+.faq {
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+	width: min(100% - 2rem, 1200px);
+	margin-inline: auto;
+
+	&__title {
+		text-align: center;
+		font-weight: 200;
+		margin-bottom: 1.4rem;
+	}
+
+	&__questions {
+		max-width: 1000px;
+		margin-inline: auto;
+	}
+}
