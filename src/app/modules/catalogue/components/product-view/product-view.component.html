@@ -1,0 +1,18 @@
+<main class="product">
+	<ng-container *ngIf="!this.isLoading; else loader">
+		<section class="product__main">
+			<article class="product__col__image">
+				<img src="{{ product.image }}" alt="">
+			</article>
+			<section class="product__col__info">
+				<h3>{{ product.productName }}</h3>
+				<strong>${{ product.price }}</strong>
+				<p>{{ product.description }}</p>
+				<button>Agregar al carrito</button>
+			</section>
+		</section>
+	</ng-container>
+	<ng-template #loader>
+
+	</ng-template>
+</main>

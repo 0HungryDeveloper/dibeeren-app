@@ -8,6 +8,7 @@ import { SharedModule } from '@shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ProductsLoaderComponent } from './components/products-loader/products-loader.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductsLoaderComponent } from './components/products-loader/products-l
 		CatalogueComponent,
 		CategoryFilterPipe,
   SearchFilterPipe,
-  ProductsLoaderComponent
+  ProductsLoaderComponent,
+  ProductViewComponent
 	],
 	imports: [
 		CommonModule,
