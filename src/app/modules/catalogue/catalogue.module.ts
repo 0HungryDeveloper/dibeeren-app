@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ProductsLoaderComponent } from './components/products-loader/products-loader.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { OtherProductsComponent } from './components/other-products/other-products.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 		CategoryFilterPipe,
   SearchFilterPipe,
   ProductsLoaderComponent,
-  ProductViewComponent
+  ProductViewComponent,
+  OtherProductsComponent
 	],
 	imports: [
 		CommonModule,

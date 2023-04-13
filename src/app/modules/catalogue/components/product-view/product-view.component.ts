@@ -16,6 +16,7 @@ export class ProductViewComponent implements OnInit {
 	product: IProduct = null;
 	colorsLength: number;
 	quantitiesLength: number;
+	productImage: string = '';
 
 	productHasColors: boolean;
 	productHasQuantities: boolean;
@@ -39,10 +40,19 @@ export class ProductViewComponent implements OnInit {
 			this.productService.onFetchProductById(this.idProduct)
 		);
 		this.product = product;
+		this.productImage = this.product.image;
 
 		this.productHasColors = product.colors.length !== 0;
 		this.productHasQuantities = product.quantities.length !== 0;
 
 		this.isLoading = !this.isLoading;
+	}
+
+	/**
+	 * Change image in product view.
+	 * @param imageURL Image displayed by pressing a colored button.
+	 */
+	onSelectedColor(imageURL: string) {
+		this.productImage = imageURL;
 	}
 }

@@ -3,7 +3,7 @@
 		<section class="product__main">
 
 			<article class="product__col">
-				<img class="img-fluid" src="{{ product.image }}"
+				<img class="img-fluid" [src]="productImage"
 				alt="{{ product.productName }}">
 			</article>
 
@@ -19,7 +19,8 @@
 							<p class="product__color__p">Moño</p>
 							<div class="d-flex gap-3">
 								<button class="product__color"
-									*ngFor="let color of product.colors">
+									*ngFor="let color of product.colors"
+									(click)="onSelectedColor(color.colorImage)">
 									<div class="product__color__display"
 									[ngStyle]="{backgroundColor: color.colorValue}">
 									</div>
@@ -41,6 +42,9 @@
 					<button class="product__add-cart">Agregar al carrito</button>
 				</div>
 			</section>
+		</section>
+		<section>
+			<app-other-products></app-other-products>
 		</section>
 	</ng-container>
 	<ng-template #loader>
