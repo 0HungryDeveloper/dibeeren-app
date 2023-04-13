@@ -12,22 +12,37 @@ import { IProduct } from 'src/app/data/interfaces/iproduct';
 export class ProductViewComponent implements OnInit {
 
 	idProduct: string = '';
-	isLoading: boolean = true;
+	isLoading: boolean;
 	product: IProduct = null;
+	colorsLength: number;
+	quantitiesLength: number;
+
+	productHasColors: boolean;
+	productHasQuantities: boolean;
 
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService
-	) { }
+	) {
+		this.isLoading = true;
+		this.colorsLength = 0;
+		this.quantitiesLength = 0;
+	}
 
 	async ngOnInit(): Promise<void> {
 		this.route.params.subscribe((params: Params) => {
 			this.idProduct = params['id'];
 		});
+
 		this.isLoading;
-		const product = await firstValueFrom(this.productService.onFetchProductById(this.idProduct));
+		const product = await firstValueFrom(
+			this.productService.onFetchProductById(this.idProduct)
+		);
 		this.product = product;
-		console.table(this.product);
+
+		this.productHasColors = product.colors.length !== 0;
+		this.productHasQuantities = product.quantities.length !== 0;
+
 		this.isLoading = !this.isLoading;
 	}
 }
