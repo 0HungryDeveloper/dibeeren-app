@@ -1,0 +1,15 @@
+@import '../../../../../styles.scss';
+
+.list-products {
+	&__title {
+		font-size: 1.2rem;
+	}
+}
+
+@include media-md {
+	.list-products {
+		&__title {
+			font-size: 1.5rem;
+		}
+	}
+}

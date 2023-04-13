@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-product-card',
@@ -10,10 +11,15 @@ export class ProductCardComponent implements OnInit {
 	@Input() image: string;
 	@Input() productName: string;
 	@Input() price: string;
+	@Input() productID: string;
 
-	constructor() { }
+	constructor(private router: Router) { }
 
 	ngOnInit(): void {
 
+	}
+
+	navigateProductView(productID: string): void {
+		this.router.navigate([`catalog/${productID}/product`])
 	}
 }

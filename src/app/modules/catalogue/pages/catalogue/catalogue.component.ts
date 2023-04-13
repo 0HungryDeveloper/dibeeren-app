@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { CATEGORY_PRODUCTS } from 'src/app/data/constants/data';
 import { IProduct } from 'src/app/data/interfaces/iproduct';
 import { ProductService } from '../../services/product.service';
@@ -10,20 +9,23 @@ import { ProductService } from '../../services/product.service';
 	styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-
+	//* Fetch products
 	products: IProduct[] = [];
+
 	loadingListProducts:boolean;
-	productFilter: string = '';
+
 	//* Pagination stuff
 	page : number = 1;
-	numbers = [0,1,2,3,4,5,6,7,8,9,10]
+
 	// * Category products
 	categoryProducts: string[] = CATEGORY_PRODUCTS;
+
+	//* Filters
+	productFilter: string = '';
 	selectedCategory: string = '';
 
 	constructor (
 		private productService: ProductService,
-		private router: Router
 	) { }
 
 	ngOnInit(): void {
