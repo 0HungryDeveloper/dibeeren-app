@@ -1,12 +1,12 @@
 <header>
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<a href="#">
+			<a routerLink="">
 				<img src="../../../assets/icons/Logo.svg" alt="Logo Dibeeren">
 			</a>
 		</div>
 		<div class="navbar__small-menu">
-			<button class="navbar__small-menu__cart btn-menu">
+			<button class="navbar__small-menu__cart btn-menu" routerLink="cart">
 				<img src="../../../assets/icons/Vector.svg" alt="">
 			</button>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -24,9 +24,9 @@
 			<li>
 				<a routerLink="catalog/products">Cátalogo</a>
 			</li>
-			<li class="navbar__links__cart" (click)="redirectToCart()">
+			<li class="navbar__links__cart" routerLink="cart">
 				<img src="../../../assets/icons/Vector.svg" alt="">
-				<a href="#">Carrito</a>
+				<a routerLink="cart">Carrito</a>
 			</li>
 		</ul>
 		<!-- Responsive Menu List -->

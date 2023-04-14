@@ -1,0 +1,9 @@
+<main>
+	<h2>Carrito</h2>
+	<article *ngFor="let order of listCart$ | async">
+		<p>{{ order.productName }}</p>
+		<p>{{ order.price }}</p>
+	</article>
+</main>
+
+

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { firstValueFrom } from 'rxjs';
 import { IProduct } from 'src/app/data/interfaces/iproduct';
+import { CartService } from 'src/app/modules/cart/services/cart.service';
 
 @Component({
 	selector: 'app-product-view',
@@ -23,7 +24,8 @@ export class ProductViewComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private productService: ProductService
+		private productService: ProductService,
+		private cartService: CartService
 	) {
 		this.isLoading = true;
 		this.colorsLength = 0;
@@ -54,5 +56,9 @@ export class ProductViewComponent implements OnInit {
 	 */
 	onSelectedColor(imageURL: string) {
 		this.productImage = imageURL;
+	}
+
+	addToCart(product: IProduct) {
+		return this.cartService.addProduct(product);
 	}
 }
