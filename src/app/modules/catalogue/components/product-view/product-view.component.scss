@@ -45,6 +45,10 @@
 		background-color: $main;
 		border-radius: 6px;
 		padding: 0.8rem 1rem;
+
+		&:hover {
+			background-color: $main-hover;
+		}
 	}
 
 	&__select {
