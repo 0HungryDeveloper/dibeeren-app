@@ -10,6 +10,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ProductsLoaderComponent } from './components/products-loader/products-loader.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { OtherProductsComponent } from './components/other-products/other-products.component';
+import { LoadProductViewComponent } from './components/load-product-view/load-product-view.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { OtherProductsComponent } from './components/other-products/other-produc
   SearchFilterPipe,
   ProductsLoaderComponent,
   ProductViewComponent,
-  OtherProductsComponent
+  OtherProductsComponent,
+  LoadProductViewComponent
 	],
 	imports: [
 		CommonModule,
