@@ -20,7 +20,7 @@
 							<div class="d-flex gap-3">
 								<button class="product__color"
 									*ngFor="let color of product.colors"
-									(click)="onSelectedColor(color.colorImage)">
+									(click)="onSelectedColor(color)">
 									<div class="product__color__display"
 									[ngStyle]="{backgroundColor: color.colorValue}">
 									</div>

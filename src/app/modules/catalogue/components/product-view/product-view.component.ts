@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { firstValueFrom } from 'rxjs';
-import { IProduct } from 'src/app/data/interfaces/iproduct';
+import { Color, IProduct } from 'src/app/data/interfaces/iproduct';
 import { CartService } from 'src/app/modules/cart/services/cart.service';
+import { ICartProduct } from 'src/app/data/interfaces/icartproduct';
 
 @Component({
 	selector: 'app-product-view',
@@ -21,6 +22,9 @@ export class ProductViewComponent implements OnInit {
 
 	productHasColors: boolean;
 	productHasQuantities: boolean;
+
+	colorSelected: string = '';
+	quantitySelected: number = 0;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -54,11 +58,25 @@ export class ProductViewComponent implements OnInit {
 	 * Change image in product view.
 	 * @param imageURL Image displayed by pressing a colored button.
 	 */
-	onSelectedColor(imageURL: string) {
-		this.productImage = imageURL;
+	onSelectedColor(color: Color) {
+		this.productImage = color.colorImage;
+		this.colorSelected = color.colorName;
 	}
 
 	addToCart(product: IProduct) {
+		const p:ICartProduct = this.getProductInformation(product);
+		console.table(p);
 		return this.cartService.addProduct(product);
+	}
+
+	getProductInformation(product: IProduct): ICartProduct {
+		const cartProduct: ICartProduct = {
+			productName: product.productName,
+			image: product.image,
+			price: product.price,
+			colorName: this.colorSelected,
+			quantity: this.quantitySelected
+		};
+		return cartProduct;
 	}
 }

@@ -11,7 +11,7 @@ export interface IProduct {
 	creationDate?: number;
 }
 
-interface Color {
+export interface Color {
 	colorImage: string;
 	colorName: string;
 	colorValue: string;
