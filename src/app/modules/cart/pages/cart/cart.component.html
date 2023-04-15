@@ -1,9 +1,26 @@
-<main>
-	<h2>Carrito</h2>
-	<article *ngFor="let order of listCart$ | async">
-		<p>{{ order.productName }}</p>
-		<p>{{ order.price }}</p>
-	</article>
+<main class="cart">
+	<h2 class="fw-light">Carrito</h2>
+	<ng-container *ngIf="(listCart$ | async)?.length !== 0">
+		<section class="cart__list-products">
+			<article *ngFor="let order of listCart$ | async">
+				<p>{{ order.productName }}</p>
+				<p>{{ order.price }}</p>
+			</article>
+		</section>
+	</ng-container>
+		<section class="cart__list-products__empty">
+			<div>
+				<p>Tu carrito está vacío</p>
+				<button routerLink="/catalog/products" class="cart__more-products">Ver productos</button>
+			</div>
+		</section>
+	<ng-template>
+
+	</ng-template>
+	<section class="cart__total">
+		<div>
+			<p class="mt-4 fw-normal">Subtotal: <span class="fw-bold">$999.99</span></p>
+			<button class="cart__confirm">Confirmar pedido</button>
+		</div>
+	</section>
 </main>
-
-
