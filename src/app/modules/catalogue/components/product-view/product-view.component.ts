@@ -51,6 +51,11 @@ export class ProductViewComponent implements OnInit {
 		this.productHasColors = product.colors.length !== 0;
 		this.productHasQuantities = product.quantities.length !== 0;
 
+		if(this.productHasColors) {
+			this.productImage = this.product.colors[0].colorImage;
+			this.colorSelected = this.product.colors[0].colorName;
+		}
+
 		this.isLoading = !this.isLoading;
 	}
 

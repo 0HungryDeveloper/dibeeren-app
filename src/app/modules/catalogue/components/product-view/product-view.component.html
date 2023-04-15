@@ -19,7 +19,8 @@
 							<p class="product__color__p">Moño</p>
 							<div class="d-flex gap-3">
 								<button class="product__color"
-									*ngFor="let color of product.colors"
+									*ngFor="let color of product.colors; let i = index"
+									[class.product__color__selected]="color.colorName === colorSelected"
 									(click)="onSelectedColor(color)">
 									<div class="product__color__display"
 									[ngStyle]="{backgroundColor: color.colorValue}">
