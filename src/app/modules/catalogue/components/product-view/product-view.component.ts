@@ -50,12 +50,18 @@ export class ProductViewComponent implements OnInit {
 		this.product = product;
 		this.productImage = this.product.image;
 
+		console.table(product)
+
 		this.productHasColors = product.colors.length !== 0;
 		this.productHasQuantities = product.quantities.length !== 0;
 
 		if(this.productHasColors) {
 			this.productImage = this.product.colors[0].colorImage;
 			this.colorSelected = this.product.colors[0].colorName;
+		}
+
+		if(this.productHasQuantities) {
+			this.quantitySelected = this.product.quantities[0];
 		}
 
 		// The information is recovered
@@ -97,5 +103,13 @@ export class ProductViewComponent implements OnInit {
 			quantity: this.quantitySelected
 		};
 		return cartProduct;
+	}
+
+	/**
+	 * Detect quantity change.
+	 * @param quantity Quantity selected.
+	 */
+	onSelectQuantity(quantity: number) {
+		this.quantitySelected = quantity;
 	}
 }

@@ -33,7 +33,9 @@
 					<ng-container *ngIf="productHasQuantities">
 						<div class="mt-2 mb-2">
 							<p class="product__color__p">Piezas</p>
-							<select class="form-select product__select">
+							<select class="form-select product__select"
+								[(ngModel)]="quantitySelected"
+								(ngModelChange)="onSelectQuantity(quantitySelected)">
 								<option *ngFor="let quantity of product.quantities"
 									[value]="quantity">{{ quantity }} Piezas</option>
 							</select>
