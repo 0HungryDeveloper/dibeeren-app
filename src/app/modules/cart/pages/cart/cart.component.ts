@@ -47,4 +47,8 @@ export class CartComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	getSubtotal() {
+		return this.cartService.getSubtotalProducts();
+	}
+
 }

@@ -24,4 +24,8 @@ export class CartService {
 		this.cartList.splice(index, 1);
 		this.shoppingCart.next(this.cartList);
 	}
+
+	getSubtotalProducts() :number{
+		return this.cartList.reduce((subtotal, product) => subtotal + product.price, 0);
+	}
 }
