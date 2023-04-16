@@ -19,4 +19,9 @@ export class CartService {
 		this.cartList.push(product);
 		this.shoppingCart.next(this.cartList);
 	}
+
+	deleteProduct(index: number) {
+		this.cartList.splice(index, 1);
+		this.shoppingCart.next(this.cartList);
+	}
 }

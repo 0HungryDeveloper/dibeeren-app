@@ -1,9 +1,11 @@
 <main class="cart">
 	<h2 class="fw-light">Carrito</h2>
-	<ng-container *ngIf="(listCart$ | async)?.length === 0; else emptyCart">
+	<ng-container *ngIf="(listCart$ | async)?.length !== 0; else emptyCart">
 		<section class="cart__list-products">
-			<!-- <app-card-item-cart *ngFor="let order of listCart$ | async" [productOrder]="order"></app-card-item-cart> -->
-			<app-card-item-cart *ngFor="let order of listCart" [productOrder]="order"></app-card-item-cart>
+			<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index"
+				[productOrder]="order" [indexItem]="i">
+			</app-card-item-cart>
+			<!-- <app-card-item-cart *ngFor="let order of listCart" [productOrder]="order"></app-card-item-cart> -->
 		</section>
 	</ng-container>
 	<ng-template #emptyCart>
