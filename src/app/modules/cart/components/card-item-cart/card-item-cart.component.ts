@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ICartProduct } from 'src/app/data/interfaces/icartproduct';
 
 @Component({
   selector: 'app-card-item-cart',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-item-cart.component.scss']
 })
 export class CardItemCartComponent {
+
+	@Input() productOrder: ICartProduct;
+
 
 }

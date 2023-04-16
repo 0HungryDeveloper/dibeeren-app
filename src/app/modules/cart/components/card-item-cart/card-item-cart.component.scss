@@ -1,0 +1,34 @@
+@import '../../../../../styles.scss';
+
+.card-item {
+
+	&__wrapper {
+		display: flex;
+		gap: 1rem;
+	}
+
+	&__image {
+		width: 35%;
+		height: auto;
+	}
+
+	&__description {
+		padding: 0.5rem 0;
+		width: 65%;
+		display: flex;
+		flex-direction: column;
+
+		&__additional {
+			display: flex;
+			gap: 1rem;
+		}
+
+		&__delete {
+			margin-top: auto;
+		}
+	}
+
+	&__price {
+		display: none;
+	}
+}
