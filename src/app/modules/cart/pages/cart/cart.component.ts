@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
 			quantity: 10,
 		},
 		{
-			productName: "Lorem ipsum dolor sit",
+			productName: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam repellat nisi, id dolorum fugit voluptatem.",
 			price: 99.99,
 			image: `https://firebasestorage.googleapis.com/v0/b/dibeeren-9d539.appspot.com/o/products%2Fdummy_product.png?alt=media&token=8dc0d1b3-ad73-473d-b062-b047a2e1fcc3`,
 			colorName: null,
