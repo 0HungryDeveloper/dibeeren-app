@@ -1,0 +1,45 @@
+@import '../../../../../styles.scss';
+
+.product {
+	width: min(100% - 2rem, 1200px);
+	margin-inline: auto;
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	&__col {
+		width: 100%;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	&__image {
+		height: 350px;
+		width: 100%;
+		background-color: #858e96;
+		margin-bottom: 1rem;
+	}
+}
+
+@include media-smd {
+	.product {
+		&__main {
+			flex-direction: row;
+		}
+
+		&__col {
+			width: 50%;
+		}
+
+		&__image {
+			height: 500px;
+		}
+	}
+}

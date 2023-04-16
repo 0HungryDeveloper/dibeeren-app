@@ -17,10 +17,11 @@
 					<ng-container *ngIf="productHasColors">
 						<div class="mt-2 mb-2">
 							<p class="product__color__p">Moño</p>
-							<div class="d-flex gap-3">
+							<div class="d-flex align-items-center gap-3">
 								<button class="product__color"
-									*ngFor="let color of product.colors"
-									(click)="onSelectedColor(color.colorImage)">
+									*ngFor="let color of product.colors; let i = index"
+									[class.product__color__selected]="color.colorName === colorSelected"
+									(click)="onSelectedColor(color)">
 									<div class="product__color__display"
 									[ngStyle]="{backgroundColor: color.colorValue}">
 									</div>
@@ -32,14 +33,16 @@
 					<ng-container *ngIf="productHasQuantities">
 						<div class="mt-2 mb-2">
 							<p class="product__color__p">Piezas</p>
-							<select class="form-select product__select">
+							<select class="form-select product__select"
+								[(ngModel)]="quantitySelected"
+								(ngModelChange)="onSelectQuantity(quantitySelected)">
 								<option *ngFor="let quantity of product.quantities"
 									[value]="quantity">{{ quantity }} Piezas</option>
 							</select>
 						</div>
 					</ng-container>
 
-					<button class="product__add-cart">Agregar al carrito</button>
+					<button class="product__add-cart" routerLink="/cart" (click)="addToCart(product)">Agregar al carrito</button>
 				</div>
 			</section>
 		</section>
@@ -48,6 +51,6 @@
 		</section>
 	</ng-container>
 	<ng-template #loader>
-		<!-- TODO: Crear el placeholder cuando se carga la información del producto -->
+		<app-load-product-view></app-load-product-view>
 	</ng-template>
 </main>

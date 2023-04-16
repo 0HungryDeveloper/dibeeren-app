@@ -1,0 +1,27 @@
+<article class="card-item mt-3">
+	<section class="card-item__wrapper">
+		<article class="card-item__image">
+			<img [src]="productOrder.image" class="img-fluid" alt="{{ productOrder.productName }}">
+		</article>
+
+		<section class="card-item__description">
+			<p class="card-item__description__name fw-light">{{ productOrder.productName }}</p>
+
+			<p class="card-item__description__price fw-semibold">${{ productOrder.price }}</p>
+
+			<div class="card-item__description__additional">
+				<ng-container *ngIf="productOrder.colorName !== null">
+					<p><span class="fw-semibold">Moño: </span>{{ productOrder.colorName }}</p>
+				</ng-container>
+				<ng-container *ngIf="productOrder.quantity !== null">
+					<p><span class="fw-semibold">Piezas: </span>{{ productOrder.quantity }}</p>
+				</ng-container>
+			</div>
+			<p class="card-item__description__delete"
+				(click)="onDeleteProduct(indexItem)">Eliminar</p>
+		</section>
+	</section>
+	<section class="card-item__price">
+		<p class="fw-semibold">${{ productOrder.price }}</p>
+	</section>
+</article>

@@ -1,0 +1,68 @@
+@import '../../../../../styles.scss';
+
+.cart {
+	width: min(100% - 2rem, 1000px);
+	margin-inline: auto;
+	margin-top: 1.5rem;
+
+	@mixin list-container {
+		margin-top: 1rem;
+		width: 100%;
+		border-bottom: 2px solid $main;
+		border-top: 2px solid $main;
+	}
+
+	&__list-products {
+		@include list-container;
+		height: auto;
+		padding-bottom: 1.2rem;
+
+		&__empty {
+			@include list-container;
+			display: grid;
+			place-items: center;
+			height: 400px;
+		}
+	}
+
+	&__total {
+		display: block;
+		margin-bottom: 1.5rem;
+	}
+
+	@mixin button-cta {
+		margin-top: 1rem;
+		display: block;
+		background-color: $main;
+		color: $secondary-color;
+		border-radius: 5px;
+		padding: 0.5rem 1rem;
+		font-weight: bold;
+		font-size: 1.1rem;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: $main-hover;
+		}
+	}
+
+	&__confirm {
+		@include button-cta;
+		width: 100%;
+	}
+
+	&__more-products {
+		@include button-cta;
+		width: fit-content;
+	}
+}
+
+
+@include media-smd {
+	.cart {
+		&__total {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+}
