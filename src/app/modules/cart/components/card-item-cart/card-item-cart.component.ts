@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ICartProduct } from 'src/app/data/interfaces/icartproduct';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-card-item-cart',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class CardItemCartComponent {
 
+	@Input() productOrder: ICartProduct;
+	@Input() indexItem: number;
+
+	constructor(private cartService: CartService) { }
+
+
+	onDeleteProduct(index: number) {
+		this.cartService.deleteProduct(index);
+	}
 }

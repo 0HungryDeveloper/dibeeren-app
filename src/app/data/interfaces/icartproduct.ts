@@ -1,6 +1,6 @@
 export interface ICartProduct {
 	productName: string;
-	price: string;
+	price: number;
 	image: string;
 	colorName?: string;
 	quantity?: number;
