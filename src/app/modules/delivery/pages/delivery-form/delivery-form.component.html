@@ -1,32 +1,47 @@
 <main class="delivery">
 	<h2 class="delivery__title">Información de entrega</h2>
-	<form class="delivery__form">
+	<form class="delivery__form" [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
 		<section class="delivery__form__wrapper">
 			<p class="delivery__section">Contacto</p>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="customerName">Nombre completo</label>
-				<input class="delivery-form__input" formControlName="customerName" type="text" name="customerName" id="customerName">
+				<label class="delivery-form__label" for="customerName">
+					Nombre completo
+				</label>
+				<input class="delivery-form__input" formControlName="customerName"
+				type="text" name="customerName" id="customerName">
 			</div>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="customerPhone">Celular</label>
-				<input class="delivery-form__input" formControlName="customerPhone" type="text" name="customerPhone" id="customerPhone">
+				<label class="delivery-form__label" for="customerPhone">
+					Celular
+				</label>
+				<input class="delivery-form__input" formControlName="customerPhone"
+				type="text" name="customerPhone" id="customerPhone"
+				pattern="[0-9]{10}" placeholder="8100000000"
+				(input)="validateNumericInput($event)" maxlength="10">
 			</div>
 
 			<p class="delivery__section">Información de envío</p>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="deliveryDate">Fecha de entrega</label>
-				<input class="delivery-form__input" formControlName="deliveryDate" type="date" name="deliveryDate" id="deliveryDate">
+				<label class="delivery-form__label" for="deliveryDate">
+					Fecha de entrega
+				</label>
+				<input class="delivery-form__input" formControlName="deliveryDate"
+					type="date" name="deliveryDate" id="deliveryDate"
+					min="{{ minDate }}">
 			</div>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="deliveryMethod">Tipo de envío</label>
-				<select class="form-select" name="deliveryMethod" id="deliveryMethod">
-					<option selected>Tipo de envío</option>
-					<option value="">Envío a domicilio</option>
-					<option value="">Recoger en Tienda 3 Bazar</option>
+				<label class="delivery-form__label" for="deliveryMethod">
+					Tipo de envío
+				</label>
+				<select class="form-select" formControlName="shippingType"
+					name="deliveryMethod" id="deliveryMethod">
+					<!-- <option selected>Tipo de envío</option> -->
+					<option value="collect">Recoger en Tienda 3 Bazar</option>
+					<option value="shipping">Envío a domicilio</option>
 				</select>
 			</div>
 
@@ -35,13 +50,20 @@
 			</ng-container>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="userAddress">Dirección</label>
-				<input class="delivery-form__input" type="text" name="userAddress" id="userAddress">
+				<label class="delivery-form__label" for="userAddress">
+					Dirección
+				</label>
+				<input class="delivery-form__input" formControlName="customerAddress"
+					type="text" name="userAddress" id="userAddress">
 			</div>
 
 			<div class="delivery-form">
-				<label class="delivery-form__label" for="postalCode">Código postal</label>
-				<input class="delivery-form__input" type="number" name="postal" id="postalCode">
+				<label class="delivery-form__label" for="postalCode">
+					Código postal
+				</label>
+				<input class="delivery-form__input" formControlName="postalCode"
+					type="text" name="postal" id="postalCode"
+					(input)="validateNumericInput($event)" maxlength="6">
 			</div>
 
 			<button class="delivery-form__btn">Continuar</button>
