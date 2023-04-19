@@ -83,6 +83,12 @@
 					</label>
 					<input class="delivery-form__input" formControlName="customerAddress"
 						type="text" name="userAddress" id="userAddress">
+
+					<div class="alert alert-danger p-2 mb-2"
+						*ngIf="!deliveryForm.get('customerAddress')?.valid &&
+						deliveryForm.get('customerAddress')?.touched">
+						Rellene este campo con su dirección.
+					</div>
 				</div>
 
 				<div class="delivery-form">
@@ -92,6 +98,12 @@
 					<input class="delivery-form__input" formControlName="postalCode"
 						type="text" name="postal" id="postalCode"
 						(input)="validateNumericInput($event)" maxlength="6">
+
+					<div class="alert alert-danger p-2 mb-2"
+						*ngIf="!deliveryForm.get('postalCode')?.valid &&
+						deliveryForm.get('postalCode')?.touched">
+						Rellene este campo con su código postal.
+					</div>
 				</div>
 			</ng-container>
 
