@@ -20,6 +20,13 @@ const routes: Routes = [
 		(
 			m => m.CartModule
 		)
+	},
+	{
+		path: 'delivery-information', loadChildren: () =>
+		import('../app/modules/delivery/delivery.module').then
+		(
+			m => m.DeliveryModule
+		)
 	}
 ];
 

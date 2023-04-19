@@ -1,0 +1,50 @@
+<main class="delivery">
+	<h2 class="delivery__title">Información de entrega</h2>
+	<form class="delivery__form">
+		<section class="delivery__form__wrapper">
+			<p class="delivery__section">Contacto</p>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="customerName">Nombre completo</label>
+				<input class="delivery-form__input" formControlName="customerName" type="text" name="customerName" id="customerName">
+			</div>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="customerPhone">Celular</label>
+				<input class="delivery-form__input" formControlName="customerPhone" type="text" name="customerPhone" id="customerPhone">
+			</div>
+
+			<p class="delivery__section">Información de envío</p>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="deliveryDate">Fecha de entrega</label>
+				<input class="delivery-form__input" formControlName="deliveryDate" type="date" name="deliveryDate" id="deliveryDate">
+			</div>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="deliveryMethod">Tipo de envío</label>
+				<select class="form-select" name="deliveryMethod" id="deliveryMethod">
+					<option selected>Tipo de envío</option>
+					<option value="">Envío a domicilio</option>
+					<option value="">Recoger en Tienda 3 Bazar</option>
+				</select>
+			</div>
+
+			<ng-container>
+				<p>Mensaje de cobro extra o instrucciones adiccionales.</p>
+			</ng-container>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="userAddress">Dirección</label>
+				<input class="delivery-form__input" type="text" name="userAddress" id="userAddress">
+			</div>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="postalCode">Código postal</label>
+				<input class="delivery-form__input" type="number" name="postal" id="postalCode">
+			</div>
+
+			<button class="delivery-form__btn">Continuar</button>
+		</section>
+	</form>
+</main>
