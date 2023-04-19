@@ -24,7 +24,10 @@ export class DeliveryFormComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.deliveryForm = new FormGroup({
-			'customerName': new FormControl(null, Validators.required),
+			'customerName': new FormControl(null, [
+				Validators.required,
+				Validators.minLength(3)
+			]),
 			'customerPhone': new FormControl(null, [
 				Validators.required,
 				Validators.pattern('[0-9]{10}')
