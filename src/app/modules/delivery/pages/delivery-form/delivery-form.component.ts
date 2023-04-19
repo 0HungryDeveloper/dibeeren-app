@@ -17,6 +17,9 @@ export class DeliveryFormComponent implements OnInit {
 	day = String(this.currentDate.getDate() + 2).padStart(2, '0');
 	minDate = `${this.year}-${this.month}-${this.day}`;
 
+	// * Shipping Type select
+	shippingType: string = '';
+
 	constructor() { }
 
 	ngOnInit(): void {
@@ -28,12 +31,8 @@ export class DeliveryFormComponent implements OnInit {
 			]),
 			'deliveryDate': new FormControl(null, Validators.required),
 			'shippingType': new FormControl(null, Validators.required),
-			'customerAddress': new FormControl(null, Validators.required),
-			'postalCode': new FormControl(null, [
-				Validators.required,
-				Validators.pattern(/^[1-9]+[0-9]*$/),
-				Validators.minLength(6)
-			]),
+			'customerAddress': new FormControl(null),
+			'postalCode': new FormControl(null),
 		})
 	}
 
@@ -41,6 +40,30 @@ export class DeliveryFormComponent implements OnInit {
 		const input = event.target as HTMLInputElement;
 		const numericValue = input.value.replace(/[^0-9]/g, '');
 		input.value = numericValue;
+	}
+
+	onShippingTypeChange(event: any) {
+		this.shippingType = event.target.value;
+
+		const customerAddressFormControl = this.deliveryForm.get('customerAddress');
+		const postalCodeFormControl = this.deliveryForm.get('postalCode');
+
+		if (this.shippingType === 'shipping') {
+			// Si se selecciona 'Envío a domicilio'
+			customerAddressFormControl.setValidators([Validators.required]);
+			postalCodeFormControl.setValidators([
+				Validators.required,
+				Validators.pattern(/^[1-9]+[0-9]*$/),
+				Validators.minLength(6)
+			]);
+		} else {
+			// Si se selecciona 'Recoger en Tienda 3 Bazar'
+			customerAddressFormControl.setValidators(null);
+			postalCodeFormControl.setValidators(null);
+		}
+
+		customerAddressFormControl.updateValueAndValidity();
+		postalCodeFormControl.updateValueAndValidity();
 	}
 
 	onSubmit() {

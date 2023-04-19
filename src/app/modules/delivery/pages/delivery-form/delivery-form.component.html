@@ -38,33 +38,39 @@
 					Tipo de envío
 				</label>
 				<select class="form-select" formControlName="shippingType"
-					name="deliveryMethod" id="deliveryMethod">
+					name="deliveryMethod" id="deliveryMethod"
+					(change)="onShippingTypeChange($event)">
 					<!-- <option selected>Tipo de envío</option> -->
 					<option value="collect">Recoger en Tienda 3 Bazar</option>
 					<option value="shipping">Envío a domicilio</option>
 				</select>
 			</div>
 
-			<ng-container>
-				<p>Mensaje de cobro extra o instrucciones adiccionales.</p>
+			<ng-container *ngIf="shippingType === 'collect'">
+				<p class="notification-shipping-type">Se selecciono: Recoger en Tienda 3 Bazar</p>
+			</ng-container>
+			<ng-container *ngIf="shippingType === 'shipping'">
+				<p class="notification-shipping-type">Se selecciono: Envío a domicilio</p>
 			</ng-container>
 
-			<div class="delivery-form">
-				<label class="delivery-form__label" for="userAddress">
-					Dirección
-				</label>
-				<input class="delivery-form__input" formControlName="customerAddress"
-					type="text" name="userAddress" id="userAddress">
-			</div>
+			<ng-container *ngIf="shippingType === 'shipping'">
+				<div class="delivery-form">
+					<label class="delivery-form__label" for="userAddress">
+						Dirección
+					</label>
+					<input class="delivery-form__input" formControlName="customerAddress"
+						type="text" name="userAddress" id="userAddress">
+				</div>
 
-			<div class="delivery-form">
-				<label class="delivery-form__label" for="postalCode">
-					Código postal
-				</label>
-				<input class="delivery-form__input" formControlName="postalCode"
-					type="text" name="postal" id="postalCode"
-					(input)="validateNumericInput($event)" maxlength="6">
-			</div>
+				<div class="delivery-form">
+					<label class="delivery-form__label" for="postalCode">
+						Código postal
+					</label>
+					<input class="delivery-form__input" formControlName="postalCode"
+						type="text" name="postal" id="postalCode"
+						(input)="validateNumericInput($event)" maxlength="6">
+				</div>
+			</ng-container>
 
 			<button class="delivery-form__btn">Continuar</button>
 		</section>
