@@ -23,6 +23,8 @@ export class DeliveryFormComponent implements OnInit {
 	// * Shipping Type select
 	shippingType: string = '';
 
+	customerInformation: ICustomer = null;
+
 	constructor(
 		private router: Router,
 		private deliveryService: DeliveryService
@@ -42,7 +44,10 @@ export class DeliveryFormComponent implements OnInit {
 			'shippingType': new FormControl(null, Validators.required),
 			'customerAddress': new FormControl(null),
 			'postalCode': new FormControl(null),
-		})
+		});
+		this.deliveryService.getCustomerInformation$().subscribe(
+			customer => this.customerInformation = customer
+		)
 	}
 
 	validateNumericInput(event: any) {
@@ -75,21 +80,28 @@ export class DeliveryFormComponent implements OnInit {
 		postalCodeFormControl.updateValueAndValidity();
 	}
 
-	onSubmit() {
-		console.log(this.deliveryForm.value)
+	getDeliveryDate() : Date {
+		const dateText = this.deliveryForm.get('deliveryDate').value;
+		const splitDateText = dateText.split("-");
+		const year = parseInt(splitDateText[0]);
+		const month = parseInt(splitDateText[1]) -1;
+		const day = parseInt(splitDateText[2]);
+		const finalDate = new Date(year, month, day);
 
-		const customerInformation: ICustomer = {
+		return finalDate;
+	}
+
+	onSubmit() {
+		this.customerInformation = {
 			name: this.deliveryForm.get('customerName').value,
 			phone: this.deliveryForm.get('customerPhone').value,
-			date: new Date(this.deliveryForm.get('deliveryDate').value),
+			date: this.getDeliveryDate(),
 			shippingType: this.deliveryForm.get('shippingType').value,
 			customeAddress: this.deliveryForm.get('customerAddress').value,
 			postalCode: this.deliveryForm.get('postalCode').value
 		}
 
-		console.log(customerInformation)
-
-		this.deliveryService.getCustomerOrderInformation(customerInformation);
+		this.deliveryService.setCustomerInformation(this.customerInformation);
 
 		this.router.navigate([`delivery/order-confirmation`]);
 	}

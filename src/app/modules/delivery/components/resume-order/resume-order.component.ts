@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeliveryService } from '../../services/delivery.service';
 
@@ -11,12 +11,16 @@ export class ResumeOrderComponent implements OnInit{
 
 	@Output() userConfirmOrder = new EventEmitter<boolean>();
 
+	customerInformation$ = this.deliveryService.getCustomerInformation$();
+
 	constructor(
 		private router: Router,
-		private deliveryService: DeliveryService
+		private deliveryService: DeliveryService,
+		@Inject(LOCALE_ID) private locale: string
 	) { }
 
 	ngOnInit(): void {
+		this.locale = 'es';
 	}
 
 	onConfirmOder() {
