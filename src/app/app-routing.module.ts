@@ -22,7 +22,7 @@ const routes: Routes = [
 		)
 	},
 	{
-		path: 'delivery-information', loadChildren: () =>
+		path: 'delivery', loadChildren: () =>
 		import('../app/modules/delivery/delivery.module').then
 		(
 			m => m.DeliveryModule
