@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-delivery-form',
@@ -20,7 +21,7 @@ export class DeliveryFormComponent implements OnInit {
 	// * Shipping Type select
 	shippingType: string = '';
 
-	constructor() { }
+	constructor(private router: Router) { }
 
 	ngOnInit(): void {
 		this.deliveryForm = new FormGroup({
@@ -71,5 +72,6 @@ export class DeliveryFormComponent implements OnInit {
 
 	onSubmit() {
 		console.log(this.deliveryForm.value)
+		this.router.navigate([`delivery/order-confirmation`]);
 	}
 }

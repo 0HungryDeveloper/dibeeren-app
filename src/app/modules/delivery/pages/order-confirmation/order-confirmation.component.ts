@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./order-confirmation.component.scss']
 })
 export class OrderConfirmationComponent {
+	displayResumeOrder: boolean = true;
 
+	onConfirmOder(event: boolean) {
+		console.log(event)
+		this.displayResumeOrder = false;
+	}
 }

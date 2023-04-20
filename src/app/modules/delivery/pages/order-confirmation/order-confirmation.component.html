@@ -2,8 +2,12 @@
 	<h2 class="order__title">Tu pedido</h2>
 	<section class="order__content">
 		<section class="order__wrapper">
-			<app-resume-order></app-resume-order>
-			<app-instrucctions></app-instrucctions>
+			<ng-container *ngIf="displayResumeOrder; else displayInstructions">
+				<app-resume-order (userConfirmOrder)="onConfirmOder($event)"></app-resume-order>
+			</ng-container>
+			<ng-template #displayInstructions>
+				<app-instrucctions></app-instrucctions>
+			</ng-template>
 		</section>
 	</section>
 </main>
