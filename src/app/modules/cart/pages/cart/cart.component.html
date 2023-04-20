@@ -5,7 +5,6 @@
 			<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index" [productOrder]="order"
 				[indexItem]="i">
 			</app-card-item-cart>
-			<!-- <app-card-item-cart *ngFor="let order of listCart" [productOrder]="order"></app-card-item-cart> -->
 		</section>
 	</ng-container>
 	<ng-template #emptyCart>

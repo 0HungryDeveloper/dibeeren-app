@@ -4,6 +4,9 @@
 	<p class="resume__sections">Producto(s)</p>
 
 	<!-- Productos -->
+	<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index"
+		[productOrder]="order" [indexItem]="i">
+	</app-card-item-cart>
 
 
 	<p class="resume__sections">Contacto</p>

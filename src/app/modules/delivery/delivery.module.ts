@@ -7,19 +7,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { ResumeOrderComponent } from './components/resume-order/resume-order.component';
 import { InstrucctionsComponent } from './components/instrucctions/instrucctions.component';
+import { CartModule } from '../cart/cart.module';
 
 
 @NgModule({
 	declarations: [
 		DeliveryFormComponent,
-  OrderConfirmationComponent,
-  ResumeOrderComponent,
-  InstrucctionsComponent
+		OrderConfirmationComponent,
+		ResumeOrderComponent,
+		InstrucctionsComponent
 	],
 	imports: [
 		CommonModule,
 		DeliveryRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		CartModule
 	]
 })
 export class DeliveryModule { }

@@ -9,11 +9,14 @@ import { CardItemCartComponent } from './components/card-item-cart/card-item-car
 @NgModule({
 	declarations: [
 		CartComponent,
-  CardItemCartComponent
+		CardItemCartComponent
 	],
 	imports: [
 		CommonModule,
 		CartRoutingModule
+	],
+	exports: [
+		CardItemCartComponent
 	]
 })
 export class CartModule { }
