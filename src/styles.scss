@@ -12,6 +12,11 @@ $medium: 786px;
 $large: 1024px;
 $extra-large: 1600px;
 
+@mixin media-gallery-products {
+    @media screen and (min-width: 520px) {
+        @content;
+    }
+}
 
 @mixin media-smd {
     @media screen and (min-width: $semi-medium) {
