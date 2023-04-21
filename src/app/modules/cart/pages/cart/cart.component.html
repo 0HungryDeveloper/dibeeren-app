@@ -15,7 +15,7 @@
 			</div>
 		</section>
 	</ng-template>
-	<section class="cart__total">
+	<section class="cart__total" *ngIf="(listCart$ | async)?.length !== 0">
 		<div>
 			<p class="mt-4 fw-normal">
 				Subtotal: <span class="fw-bold">$ {{ getSubtotal() }}</span>
