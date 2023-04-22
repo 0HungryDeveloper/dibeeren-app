@@ -17,7 +17,7 @@
 					<p><span class="fw-semibold">Piezas: </span>{{ productOrder.quantity }}</p>
 				</ng-container>
 			</div>
-			<p class="card-item__description__delete"
+			<p class="card-item__description__delete" *ngIf="!onHideOptionToDeleteItem()"
 				(click)="onDeleteProduct(indexItem)">Eliminar</p>
 		</section>
 	</section>
