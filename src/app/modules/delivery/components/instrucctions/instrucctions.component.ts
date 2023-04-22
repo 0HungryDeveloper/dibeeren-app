@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instrucctions',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class InstrucctionsComponent {
 
+	constructor(private router: Router) { }
+
+	onKeepBuying() {
+		this.router.navigate([`/catalog/products`]);
+	}
 }
