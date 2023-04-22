@@ -8,6 +8,7 @@ import { OrderConfirmationComponent } from './pages/order-confirmation/order-con
 import { ResumeOrderComponent } from './components/resume-order/resume-order.component';
 import { InstrucctionsComponent } from './components/instrucctions/instrucctions.component';
 import { CartModule } from '../cart/cart.module';
+import { ConfirmOrderComponent } from './pages/confirm-order/confirm-order.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CartModule } from '../cart/cart.module';
 		DeliveryFormComponent,
 		OrderConfirmationComponent,
 		ResumeOrderComponent,
-		InstrucctionsComponent
+		InstrucctionsComponent,
+  ConfirmOrderComponent
 	],
 	imports: [
 		CommonModule,

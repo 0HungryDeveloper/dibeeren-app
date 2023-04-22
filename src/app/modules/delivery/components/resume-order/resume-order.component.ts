@@ -13,8 +13,6 @@ import { IOrder } from 'src/app/data/interfaces/iorder';
 })
 export class ResumeOrderComponent implements OnInit {
 
-	@Output() userConfirmOrder = new EventEmitter<boolean>();
-
 	customerInformation$ = this.deliveryService.getCustomerInformation$();
 
 	listCart$ = this.cartService.cart$;
@@ -52,7 +50,7 @@ export class ResumeOrderComponent implements OnInit {
 
 		this.deliveryService.createOrder(orderInformation);
 
-		this.userConfirmOrder.emit(false)
+		this.router.navigate(['/delivery/instrucctions']);
 	}
 
 	onCancelOrder() {
