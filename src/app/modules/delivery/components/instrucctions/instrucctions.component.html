@@ -1,6 +1,6 @@
 <section class="instructions">
 	<h3 class="text-center mb-3">Instrucciones de pago</h3>
-	<p class="fw-bolder mb-3">ID pedido: <span class="fw-normal">#123456</span></p>
+	<p class="fw-bolder mb-3">ID pedido: <span class="fw-normal"># {{ (orderId$ | async) }}</span></p>
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nesciunt minus iusto, aperiam assumenda velit quidem tempora eos ducimus nemo, doloremque modi a asperiores porro dolorum et, iure tenetur exercitationem.</p>
 
@@ -8,5 +8,5 @@
 
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusantium quibusdam rerum eum adipisci iste.</p>
 
-	<button class="instructions__continue-btn">Seguir comprando</button>
+	<button class="instructions__continue-btn" (click)="onKeepBuying()">Seguir comprando</button>
 </section>

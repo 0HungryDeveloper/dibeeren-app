@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DeliveryFormComponent } from './pages/delivery-form/delivery-form.component';
 import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
+import { ConfirmOrderComponent } from './pages/confirm-order/confirm-order.component';
 
 const routes: Routes = [
 	{
@@ -11,6 +12,10 @@ const routes: Routes = [
 	{
 		path: 'order-confirmation',
 		component: OrderConfirmationComponent
+	},
+	{
+		path: 'instrucctions',
+		component: ConfirmOrderComponent
 	}
 ];
 
