@@ -1,0 +1,31 @@
+<section class="resume">
+	<p class="resume__sections">Información del pedido</p>
+
+	<p class="resume__sections">Producto(s)</p>
+
+	<!-- Productos -->
+	<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index"
+		[productOrder]="order" [indexItem]="i">
+	</app-card-item-cart>
+
+
+	<p class="resume__sections">Contacto</p>
+	<p>Nombre: {{ (customerInformation$ | async).name }}</p>
+	<p>Celular: {{ (customerInformation$ | async).phone }}</p>
+
+	<p class="resume__sections">Entrega</p>
+	<ng-container *ngIf="(customerInformation$ | async).customeAddress === null &&
+		(customerInformation$ | async).postalCode === null; else displayAddress">
+		<p>Recoger en Tienda 3 Bazar</p>
+	</ng-container>
+	<ng-template #displayAddress>
+		<p>Dirección: {{ (customerInformation$ | async).customeAddress }}</p>
+		<p>Código postal: {{ (customerInformation$ | async).postalCode }}</p>
+	</ng-template>
+	<p>Fecha de entrega: {{ (customerInformation$ | async).date | date: 'd MMM y' }}</p>
+
+	<div class="resume__action-buttons">
+		<button class="resume__confirm" type="button" (click)="onConfirmOder()">Confirmar</button>
+		<button class="resume__cancel" type="button" (click)="onCancelOrder()">Cancelar</button>
+	</div>
+</section>

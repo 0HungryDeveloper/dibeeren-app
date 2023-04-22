@@ -1,0 +1,81 @@
+@import '../../../../../styles.scss';
+
+.delivery {
+	width: min(100% - 2rem, 1200px);
+	margin-inline: auto;
+	margin-bottom: 3rem;
+
+	&__title {
+		margin: 2rem 0;
+	}
+
+	&__section {
+		font-size: 1.2rem;
+		font-weight: bolder;
+		margin-bottom: 1rem;
+	}
+
+	&__form {
+		border: 2px solid $main;
+		padding: 1rem;
+		border-radius: 10px;
+		max-width: 900px;
+	}
+}
+
+.delivery-form {
+	&__input {
+		margin-bottom: 1rem;
+		width: 100%;
+		border: 1px solid $main;
+		border-radius: 5px;
+		height: 2rem;
+		padding: 0 5px;
+
+		&__disabled {
+			display: none;
+		}
+	}
+
+	&__label {
+		margin-bottom: 0.5rem;
+	}
+
+	&__btn {
+		color: white;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		width: 100%;
+		font-weight: bold;
+		font-size: 1.1rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+
+.form-select {
+	padding: 0.3rem;
+	border: 1px solid $main;
+}
+
+#deliveryDate {
+	padding: 1rem 5px;
+}
+
+.notification-shipping-type {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+@include media-md {
+	.delivery {
+		&__form {
+			margin: 0 auto;
+
+			&__wrapper {
+				max-width: 500px;
+				margin: 2rem auto;
+			}
+		}
+	}
+}

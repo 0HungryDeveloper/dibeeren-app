@@ -1,0 +1,116 @@
+<main class="delivery">
+	<h2 class="delivery__title">Información de entrega</h2>
+	<form class="delivery__form" [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+		<section class="delivery__form__wrapper">
+			<p class="delivery__section">Contacto</p>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="customerName">
+					Nombre completo
+				</label>
+				<input class="delivery-form__input" formControlName="customerName"
+				type="text" name="customerName" id="customerName">
+
+				<div class="alert alert-danger p-2 mb-2"
+					*ngIf="!deliveryForm.get('customerName')?.valid &&
+					deliveryForm.get('customerName')?.touched">
+					Rellene este campo con su nombre completo.
+				</div>
+			</div>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="customerPhone">
+					Celular
+				</label>
+				<input class="delivery-form__input" formControlName="customerPhone"
+				type="text" name="customerPhone" id="customerPhone"
+				pattern="[0-9]{10}" placeholder="8100000000"
+				(input)="validateNumericInput($event)" maxlength="10">
+
+				<div class="alert alert-danger p-2 mb-2"
+					*ngIf="!deliveryForm.get('customerPhone')?.valid &&
+					deliveryForm.get('customerPhone')?.touched">
+					Rellene este campo con un número válido.
+				</div>
+			</div>
+
+			<p class="delivery__section">Información de envío</p>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="deliveryDate">
+					Fecha de entrega
+				</label>
+				<input class="delivery-form__input" formControlName="deliveryDate"
+					type="date" name="deliveryDate" id="deliveryDate"
+					min="{{ minDate }}">
+
+				<div class="alert alert-danger p-2 mb-2"
+				*ngIf="!deliveryForm.get('deliveryDate')?.valid &&
+				deliveryForm.get('deliveryDate')?.touched">
+				Seleccione una fecha de envío.
+				</div>
+			</div>
+
+			<div class="delivery-form">
+				<label class="delivery-form__label" for="deliveryMethod">
+					Tipo de envío
+				</label>
+				<select class="form-select" formControlName="shippingType"
+					name="deliveryMethod" id="deliveryMethod"
+					(change)="onShippingTypeChange($event)">
+					<!-- <option selected>Tipo de envío</option> -->
+					<option value="collect">Recoger en Tienda 3 Bazar</option>
+					<option value="shipping">Envío a domicilio</option>
+				</select>
+				<div class="alert alert-danger p-2 mb-2"
+				*ngIf="!deliveryForm.get('shippingType')?.valid &&
+				deliveryForm.get('shippingType')?.touched">
+				Seleccione un tipo de envío
+				</div>
+			</div>
+
+			<ng-container *ngIf="shippingType === 'collect'">
+				<p class="notification-shipping-type">Se selecciono: Recoger en Tienda 3 Bazar</p>
+			</ng-container>
+			<ng-container *ngIf="shippingType === 'shipping'">
+				<p class="notification-shipping-type">Se selecciono: Envío a domicilio</p>
+			</ng-container>
+
+			<ng-container *ngIf="shippingType === 'shipping'">
+				<div class="delivery-form">
+					<label class="delivery-form__label" for="userAddress">
+						Dirección
+					</label>
+					<input class="delivery-form__input" formControlName="customerAddress"
+						type="text" name="userAddress" id="userAddress">
+
+					<div class="alert alert-danger p-2 mb-2"
+						*ngIf="!deliveryForm.get('customerAddress')?.valid &&
+						deliveryForm.get('customerAddress')?.touched">
+						Rellene este campo con su dirección.
+					</div>
+				</div>
+
+				<div class="delivery-form">
+					<label class="delivery-form__label" for="postalCode">
+						Código postal
+					</label>
+					<input class="delivery-form__input" formControlName="postalCode"
+						type="text" name="postal" id="postalCode"
+						(input)="validateNumericInput($event)" maxlength="6">
+
+					<div class="alert alert-danger p-2 mb-2"
+						*ngIf="!deliveryForm.get('postalCode')?.valid &&
+						deliveryForm.get('postalCode')?.touched">
+						Rellene este campo con su código postal.
+					</div>
+				</div>
+			</ng-container>
+
+			<button class="delivery-form__btn" [disabled]="deliveryForm.invalid"
+				[ngStyle]="{'background-color': deliveryForm.invalid ? '#a5b5c8c7' : '#A5B5C8'}">
+				Continuar
+			</button>
+		</section>
+	</form>
+</main>

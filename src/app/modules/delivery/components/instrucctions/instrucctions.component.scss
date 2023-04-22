@@ -1,0 +1,17 @@
+@import '../../../../../styles.scss';
+
+.instructions {
+	padding: 1rem;
+
+	&__continue-btn {
+		display: block;
+		width: 100%;
+		background-color: $main;
+		font-weight: bold;
+		color: $secondary-color;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		margin: 1.2rem auto 0;
+		max-width: 400px;
+	}
+}

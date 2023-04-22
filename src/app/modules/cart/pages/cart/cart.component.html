@@ -2,10 +2,9 @@
 	<h2 class="fw-light">Carrito</h2>
 	<ng-container *ngIf="(listCart$ | async)?.length !== 0; else emptyCart">
 		<section class="cart__list-products">
-			<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index"
-				[productOrder]="order" [indexItem]="i">
+			<app-card-item-cart *ngFor="let order of listCart$ | async; let i = index" [productOrder]="order"
+				[indexItem]="i">
 			</app-card-item-cart>
-			<!-- <app-card-item-cart *ngFor="let order of listCart" [productOrder]="order"></app-card-item-cart> -->
 		</section>
 	</ng-container>
 	<ng-template #emptyCart>
@@ -16,10 +15,13 @@
 			</div>
 		</section>
 	</ng-template>
-	<section class="cart__total">
+	<section class="cart__total" *ngIf="(listCart$ | async)?.length !== 0">
 		<div>
-			<p class="mt-4 fw-normal">Subtotal: <span class="fw-bold">$ {{ getSubtotal() }}</span></p>
-			<button class="cart__confirm">Confirmar pedido</button>
+			<p class="mt-4 fw-normal">
+				Subtotal: <span class="fw-bold">$ {{ getSubtotal() }}</span>
+			</p>
+			<button class="cart__confirm" type="button" (click)="onConfirmOrder()">
+				Confirmar pedido</button>
 		</div>
 	</section>
 </main>
