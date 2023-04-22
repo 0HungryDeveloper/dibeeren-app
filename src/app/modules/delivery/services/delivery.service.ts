@@ -13,6 +13,10 @@ export class DeliveryService {
 
 	private customerInformation$ = new BehaviorSubject<ICustomer>(this.customer);
 
+	private orderID: number = 0;
+
+	private orderIdInvoice$ = new BehaviorSubject<number>(this.orderID);
+
 	constructor(private firestore: Firestore) { }
 
 	getCustomerInformation$() : Observable<ICustomer> {
@@ -21,6 +25,14 @@ export class DeliveryService {
 
 	setCustomerInformation(customer: ICustomer) : void {
 		this.customerInformation$.next(customer);
+	}
+
+	getOrderId$() : Observable<number> {
+		return this.orderIdInvoice$.asObservable();
+	}
+
+	setOrderId(orderId : number) : void {
+		this.orderIdInvoice$.next(orderId);
 	}
 
 	createOrder(order: IOrder) {

@@ -50,6 +50,8 @@ export class ResumeOrderComponent implements OnInit {
 
 		this.deliveryService.createOrder(orderInformation);
 
+		this.deliveryService.setOrderId(orderInformation.id);
+
 		this.router.navigate(['/delivery/instrucctions']);
 	}
 
