@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, orderBy, query } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, orderBy, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/data/interfaces/iproduct';
 
@@ -16,8 +16,9 @@ export class ProductService {
 	 */
 	onFetchProducts(): Observable<IProduct[]> {
 		const productReference = collection(this.firestore, 'products');
-		const orderQuery = query(productReference, orderBy('creationProductDate', 'desc'));
-		return collectionData(orderQuery, {idField: 'id'}) as Observable<IProduct[]>
+		// Agregar where() para filtrar por la propiedad availability
+		const filteredQuery = query(productReference, where('availability', '==', true), orderBy('creationProductDate', 'desc'));
+		return collectionData(filteredQuery, { idField: 'id' }) as Observable<IProduct[]>;
 	}
 
 	/**
