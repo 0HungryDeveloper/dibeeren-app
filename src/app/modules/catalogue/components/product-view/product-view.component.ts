@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { firstValueFrom } from 'rxjs';
 import { Color, IProduct } from 'src/app/data/interfaces/iproduct';
@@ -29,7 +29,8 @@ export class ProductViewComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private productService: ProductService,
-		private cartService: CartService
+		private cartService: CartService,
+		private router: Router
 	) {
 		this.isLoading = true;
 		this.colorsLength = 0;
@@ -48,25 +49,28 @@ export class ProductViewComponent implements OnInit {
 			this.productService.onFetchProductById(this.idProduct)
 		);
 		this.product = product;
-		this.productImage = this.product.image;
 
-		console.table(product)
+		if (!this.product.availability) {
+			this.router.navigate([`/catalog/products`]);
+		} else {
+			this.productImage = this.product.image;
 
-		this.productHasColors = product.colors.length !== 0;
-		this.productHasQuantities = product.quantities.length !== 0;
+			this.productHasColors = product.colors.length !== 0;
+			this.productHasQuantities = product.quantities.length !== 0;
 
-		if(this.productHasColors) {
-			this.productImage = this.product.colors[0].colorImage;
-			this.colorSelected = this.product.colors[0].colorName;
+			if (this.productHasColors) {
+				this.productImage = this.product.colors[0].colorImage;
+				this.colorSelected = this.product.colors[0].colorName;
+			}
+
+			if (this.productHasQuantities) {
+				this.selectedQuantity = this.product.quantities[0].quantities;
+				this.product.price = this.product.quantities[0].price;
+			}
+
+			// The information is recovered
+			this.isLoading = !this.isLoading;
 		}
-
-		if(this.productHasQuantities) {
-			this.selectedQuantity = this.product.quantities[0].quantities;
-			this.product.price = this.product.quantities[0].price;
-		}
-
-		// The information is recovered
-		this.isLoading = !this.isLoading;
 	}
 
 	/**
@@ -77,7 +81,7 @@ export class ProductViewComponent implements OnInit {
 			quantity => quantity.quantities === this.selectedQuantity
 		);
 
-		if(getNewProductPrice) {
+		if (getNewProductPrice) {
 			this.product.price = getNewProductPrice.price;
 		}
 	}
@@ -97,7 +101,7 @@ export class ProductViewComponent implements OnInit {
 	 * @returns Add the product to the cart list.
 	 */
 	addToCart(product: IProduct) {
-		const abstractProduct:ICartProduct = this.getProductInformation(product);
+		const abstractProduct: ICartProduct = this.getProductInformation(product);
 		console.table(abstractProduct);
 
 		return this.cartService.addProduct(abstractProduct);
