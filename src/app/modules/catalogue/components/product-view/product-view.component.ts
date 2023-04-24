@@ -24,7 +24,7 @@ export class ProductViewComponent implements OnInit {
 	productHasQuantities: boolean;
 
 	colorSelected: string = null;
-	quantitySelected: number = null;
+	selectedQuantity: number = null;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -61,11 +61,25 @@ export class ProductViewComponent implements OnInit {
 		}
 
 		if(this.productHasQuantities) {
-			this.quantitySelected = this.product.quantities[0];
+			this.selectedQuantity = this.product.quantities[0].quantities;
+			this.product.price = this.product.quantities[0].price;
 		}
 
 		// The information is recovered
 		this.isLoading = !this.isLoading;
+	}
+
+	/**
+	 * Detect quantity change and update price.
+	 */
+	onSelectQuantity() {
+		const getNewProductPrice = this.product.quantities.find(
+			quantity => quantity.quantities === this.selectedQuantity
+		);
+
+		if(getNewProductPrice) {
+			this.product.price = getNewProductPrice.price;
+		}
 	}
 
 	/**
@@ -100,16 +114,8 @@ export class ProductViewComponent implements OnInit {
 			image: product.image,
 			price: product.price,
 			colorName: this.colorSelected,
-			quantity: this.quantitySelected
+			quantity: this.selectedQuantity
 		};
 		return cartProduct;
-	}
-
-	/**
-	 * Detect quantity change.
-	 * @param quantity Quantity selected.
-	 */
-	onSelectQuantity(quantity: number) {
-		this.quantitySelected = quantity;
 	}
 }

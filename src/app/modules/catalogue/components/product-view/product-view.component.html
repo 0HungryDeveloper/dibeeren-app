@@ -34,10 +34,10 @@
 						<div class="mt-2 mb-2">
 							<p class="product__color__p">Piezas</p>
 							<select class="form-select product__select"
-								[(ngModel)]="quantitySelected"
-								(ngModelChange)="onSelectQuantity(quantitySelected)">
+								[(ngModel)]="selectedQuantity"
+								(ngModelChange)="onSelectQuantity()">
 								<option *ngFor="let quantity of product.quantities"
-									[value]="quantity">{{ quantity }} Piezas</option>
+									[value]="quantity.quantities">{{ quantity.quantities }} Piezas</option>
 							</select>
 						</div>
 					</ng-container>
