@@ -30,4 +30,14 @@ export class ProductService {
 		const productReference = doc(this.firestore, `products/${id_product}`);
 		return docData(productReference) as Observable<IProduct>
 	}
+
+	/**
+	 * Fetch all products with the property displayInHome in true.
+	 * @returns List of products with displayInHome in true.
+	 */
+	onFetchProductsToDisplayInHome(): Observable<IProduct[]> {
+		const productReference = collection(this.firestore, 'products');
+		const productsList = query(productReference, where('displayInHome','==',true));
+		return collectionData(productsList) as Observable<IProduct[]>
+	}
 }

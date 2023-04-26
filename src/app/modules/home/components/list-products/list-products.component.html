@@ -1,6 +1,11 @@
 <section class="products">
 	<h2 class="products__title">Lorem ipsum</h2>
 	<div class="products__grid">
-		<app-product-card *ngFor="let product of products"></app-product-card>
+		<app-product-card *ngFor="let product of products"
+		[image]="product.image"
+		[productName]="product.productName"
+		[price]="product.price"
+		[productID]="product.id"
+		/>
 	</div>
 </section>

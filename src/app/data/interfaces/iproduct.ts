@@ -9,6 +9,7 @@ export interface IProduct {
 	quantities?: Quantity[];
 	availability: boolean;
 	creationDate?: number;
+	displayInHome?: boolean;
 }
 
 export interface Color {

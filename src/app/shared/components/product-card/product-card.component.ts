@@ -10,7 +10,7 @@ export class ProductCardComponent implements OnInit {
 
 	@Input() image: string;
 	@Input() productName: string;
-	@Input() price: string;
+	@Input() price: number;
 	@Input() productID: string;
 
 	constructor(private router: Router) { }

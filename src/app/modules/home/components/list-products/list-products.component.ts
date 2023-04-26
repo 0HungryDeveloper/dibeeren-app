@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/data/interfaces/iproduct';
+import { ProductService } from 'src/app/modules/catalogue/services/product.service';
 
 @Component({
 	selector: 'app-list-products',
@@ -6,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-	products: number[] = [1, 2, 3, 4]
+	products: IProduct[] = [];
 
-	constructor() { }
+	constructor(private productService: ProductService) { }
 
 	ngOnInit(): void {
+		this.productService.onFetchProductsToDisplayInHome().subscribe(
+			products => this.products = products
+		)
 	}
 
 }
