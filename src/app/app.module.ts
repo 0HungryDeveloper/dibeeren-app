@@ -9,12 +9,14 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
 		FooterComponent,
+  NavbarComponent,
 	],
 	imports: [
 		BrowserModule,
