@@ -1,4 +1,4 @@
-<header>
+<header class="mb-2">
 	<nav class="navbar">
 		<div class="navbar__logo">
 			<a routerLink="">
@@ -6,11 +6,11 @@
 			</a>
 		</div>
 		<div class="navbar__small-menu">
-			<button class="navbar__small-menu__cart btn-menu" routerLink="cart">
+			<button class="navbar__small-menu__cart btn-menu" (click)="navigateToCart()">
 				<img src="../../../assets/icons/Vector.svg" alt="">
 			</button>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" #navbarToggler>
 				<span>
 					<img src="../../../assets/icons/hambergermenu.svg" alt="">
 				</span>
@@ -19,53 +19,30 @@
 		<!-- Desktop Version Menu  -->
 		<ul class="navbar__links">
 			<li>
-				<a routerLink="">Inicio</a>
+				<a class="nav-link active" aria-current="page" (click)="navigateTo('/')">Inicio</a>
 			</li>
 			<li>
-				<a routerLink="catalog/products">Cátalogo</a>
+				<a class="nav-link active" (click)="navigateTo('/catalog/products')">Productos</a>
 			</li>
-			<li class="navbar__links__cart" routerLink="cart">
+			<li class="navbar__links__cart" (click)="navigateTo('cart')">
 				<img src="../../../assets/icons/Vector.svg" alt="">
-				<a routerLink="cart">Carrito</a>
+				<a (click)="navigateTo('cart')">Carrito</a>
 			</li>
 		</ul>
 		<!-- Responsive Menu List -->
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="collapse navbar-collapse bg-light ps-3" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
 				<ul class="navbar__movil">
 					<li>
-						<a routerLink="">Inicio</a>
+						<a (click)="navigateTo('/')">Inicio</a>
 					</li>
 					<li>
-						<a routerLink="catalog/products">Cátalogo</a>
+						<a (click)="navigateTo('/catalog/products')">Cátalogo</a>
+					</li>
+					<li>
+						<a (click)="navigateTo('/cart')">Carrito</a>
 					</li>
 				</ul>
-			</div>
-		</div>
-	</nav>
-	<nav class="navbar bg-light">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Offcanvas navbar</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-				aria-controls="offcanvasNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-				aria-labelledby="offcanvasNavbarLabel">
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" routerLink="">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" routerLink="catalog/products">Cátalogo</a>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</nav>
