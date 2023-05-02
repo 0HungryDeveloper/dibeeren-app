@@ -1,0 +1,31 @@
+<header>
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid">
+			<div class="navbar__logo">
+				<a routerLink="">
+					<img src="../../../assets/icons/Logo.svg" alt="Logo Dibeeren">
+				</a>
+			</div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" #navbarToggler>
+				<!-- <span class="navbar-toggler-icon">
+					<img src="../../../assets/icons/hambergermenu.svg" alt="">
+				</span> -->
+				<span>
+					<img src="../../../assets/icons/hambergermenu.svg" alt="">
+				</span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav ms-auto list-routes">
+					<a class="nav-link active" aria-current="page" (click)="navigateTo('/')">Inicio</a>
+					<a class="nav-link active" (click)="navigateTo('/catalog/products')">Productos</a>
+					<div class="d-flex g">
+						<img src="../../../assets/icons/Vector.svg" alt="Carrito">
+						<a class="nav-link active" (click)="navigateTo('cart')">Carrito</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+

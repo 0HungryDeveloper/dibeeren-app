@@ -5,6 +5,10 @@ header {
 	margin-inline: auto;
 }
 
+li {
+	cursor: pointer;
+	width: fit-content;
+}
 // Override styles of bootstrap hamburger button
 .navbar-toggler {
 	background-color: $main;

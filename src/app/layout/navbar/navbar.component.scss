@@ -1,0 +1,22 @@
+header {
+	width: min(100% - 2rem, 1200px);
+	margin-inline: auto;
+}
+
+.navbar {
+	margin: 0;
+	padding: 0;
+}
+
+.container-fluid {
+	--bs-gutter-x: 0;
+}
+
+.g {
+	gap: 0.5rem;
+}
+
+.list-routes {
+	margin-top: 1rem;
+	padding-left: 1rem;
+}
